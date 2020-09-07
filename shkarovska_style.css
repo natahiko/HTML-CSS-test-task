@@ -537,7 +537,7 @@ label.arrows:hover {
 
 /*--- MEDIA PART ---------------------------------------------------------------*/
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   :root {
     --icon-list-height: 175px;
     --bottom_arrow: calc(var(--icon-list-height) + 15px);
