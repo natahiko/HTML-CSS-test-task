@@ -1,0 +1,866 @@
+:root {
+  --header-height: 56px;
+  --icon-list-height: 279px;
+  --bottom_arrow: calc(var(--icon-list-height) + 55px);
+  --navlist-height: 35px;
+}
+
+@font-face {
+  font-family: "ProximaNova";
+  src: url("natahiko_fonts/ProximaNovaExCn-Regular.eot") format("eot"),
+  url("natahiko_fonts/ProximaNovaExCn-Regular.ttf") format("ttf"),
+  url("natahiko_fonts/ProximaNovaExCn-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ProximaNova-Bold";
+  src: url("natahiko_fonts/ProximaNovaExCn-Bold.eot") format("eot"),
+  url("natahiko_fonts/ProximaNovaExCn-Bold.ttf") format("ttf"),
+  url("natahiko_fonts/ProximaNovaExCn-Bold.woff") format("woff");
+  font-weight: bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "ProximaNova", sans-serif;
+}
+
+body {
+  padding-top: var(--header-height);
+  background: darkblue;
+}
+
+/*--- HEADER PART ---------------------------------------------*/
+.header {
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav {
+  max-width: 1146px;
+  margin: auto;
+  height: 100%;
+}
+
+.logo {
+  display: table;
+  height: var(--header-height);
+  float: left;
+}
+
+.logo * {
+  display: table-cell;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.logo label {
+  font-size: 30px;
+  color: rgb(4, 4, 4);
+}
+
+#hider {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+#hider:checked + .description {
+  display: block;
+}
+
+#hider:checked + .description {
+  display: block;
+}
+
+.logo div {
+  font-size: 13px;
+  width: 198px;
+  padding-left: 33px;
+}
+
+.contact {
+  float: right;
+  display: table;
+  height: 100%;
+}
+
+.contact * {
+  display: table-cell;
+  vertical-align: middle;
+  font-family: "ProximaNova-Bold";
+}
+
+.phone {
+  font-size: 35px;
+  padding-right: 29px;
+  line-height: var(--header-height);
+}
+
+.contact a {
+  background: linear-gradient(#FF4F58, #FD7048);
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  padding: 5px 12px;
+  font-size: 13px;
+}
+
+/*--- LOVER HEADER PART ----------------------------------------------*/
+.nav_list {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 98;
+  height: var(--navlist-height);
+}
+
+.nav_list ul {
+  margin: auto;
+  width: fit-content;
+}
+
+.nav_list li {
+  list-style: none;
+  font-family: ProximaNova-Bold;
+  font-size: 14px;
+  display: inline-block;
+  width: 230px;
+  text-align: center;
+  padding: 9px 0;
+}
+
+.nav_list li a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  width: 100%;
+  display: inline-block;
+  border-right: 1px solid #CCCCCC;
+}
+
+/*--- FOOTER WITH ICONS PART --------------------------------------------*/
+.icon_list {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  height: var(--icon-list-height);
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  max-height: var(--icon-list-height);
+  z-index: 99;
+  overflow: auto;
+}
+
+.icon_list ul {
+  margin: auto;
+  width: fit-content;
+}
+
+.icon_list ul li {
+  list-style: none;
+  display: inline-block;
+  width: 255px;
+  font-size: 16px;
+  vertical-align: top;
+  text-align: center;
+  margin: 0 15px;
+  padding-top: 20px;
+}
+
+.icon_list .caption {
+  font-size: 22px;
+  font-family: "ProximaNova-Bold";
+}
+
+.icon {
+  width: 98px;
+  height: 98px;
+}
+
+/*--- CONTENT PART -------------------------------------------*/
+.content {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.carouselle {
+  display: table-row;
+  height: 100%;
+}
+
+/*--- SLIDER SECTION ----------------------------------------------*/
+
+.slideshow-wrap {
+  display: block;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  position: absolute;
+  top: var(--header-height);
+}
+
+.slideshow-inner {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.slideshow-inner ul {
+  list-style: none;
+  height: 100%;
+  width: 500%;
+  overflow: hidden;
+  position: relative;
+  left: 0;
+  transition: left .8s ease-in-out;
+}
+
+.slideshow-inner ul li {
+  width: 20%;
+  float: left;
+  position: relative;
+  height: 100%;
+}
+
+.slideshow-inner ul li img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.slideshow-wrap input[type=radio] {
+  position: absolute;
+  left: 20%;
+  bottom: 15px;
+  z-index: 90;
+  visibility: hidden;
+}
+
+.slideshow-wrap input + label {
+  position: absolute;
+  left: 20%;
+  bottom: calc(var(--bottom_arrow) + 7px);
+  z-index: 90;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 3px solid white;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.slideshow-wrap input + label:after {
+  width: 7.5px;
+  height: 7.5px;
+  content: "";
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 3.57px;
+  left: 3.75px;
+  display: none;
+}
+
+.slideshow-wrap input:checked + label:after {
+  display: block;
+}
+
+.slideshow-wrap label[for=nav-1] {
+  margin-left: -30px;
+}
+
+.slideshow-wrap label[for=nav-3] {
+  margin-left: 30px;
+}
+
+#nav-1:checked ~ .slideshow-inner > ul {
+  left: 0;
+}
+
+#nav-2:checked ~ .slideshow-inner > ul {
+  left: -100%;
+}
+
+#nav-3:checked ~ .slideshow-inner > ul {
+  left: -200%;
+}
+
+label.arrows {
+  color: rgb(255, 255, 240);
+  position: absolute;
+  bottom: var(--bottom_arrow);
+  margin-top: -25px;
+  display: none;
+  cursor: pointer;
+  z-index: 90;
+  background-color: transparent;
+  transition: opacity .2s;
+}
+
+label.arrows:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+#nav-1:checked ~ .arrows#arrow-2, #nav-2:checked ~ .arrows#arrow-3, #nav-3:checked ~ .arrows#arrow-1 {
+  right: calc(80% - 107px);
+  display: block;
+  width: 19px;
+  height: 34px;
+  content: url("natahiko_images/rigth_natahiko_arrow.svg");
+}
+
+#nav-2:checked ~ .arrows#arrow-1, #nav-3:checked ~ .arrows#arrow-2, #nav-1:checked ~ .arrows#arrow-3 {
+  left: calc(20% - 107px);
+  display: block;
+  width: 19px;
+  height: 34px;
+  content: url("natahiko_images/left_natahiko_arrow.svg");
+}
+
+#nav-1:checked ~ .arrows#arrow-3 {
+  left: calc(20% - 120px);
+}
+
+#nav-2:checked ~ .arrows#arrow-1 {
+  left: calc(20% - 60px);
+}
+
+#nav-3:checked ~ .arrows#arrow-2 {
+  left: calc(20% - 90px);
+}
+
+/*--- STATIC ELEMENTS ------------------------------*/
+.shadow_block {
+  border-right: 130px solid transparent;
+  border-top: calc(100vh - var(--header-height) - var(--icon-list-height) - var(--navlist-height)) solid rgba(0, 0, 0, 0.4);
+  position: relative;
+  left: 0;
+  top: var(--navlist-height);
+  height: 0;
+  z-index: 80;
+  width: 33%;
+}
+
+.static-elements {
+  position: absolute;
+  top: calc(var(--header-height) + var(--navlist-height) + 30px);
+  left: 400px;
+  z-index: 90;
+}
+
+.main .title {
+  font-family: "Intro", sans-serif;
+  color: black;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 90px;
+  height: 110px;
+  display: inline-block;
+  min-width: 550px;
+}
+
+.main .left-border {
+  border-right: 30px solid rgba(255, 255, 255, 0.7);
+  border-top: 110px solid transparent;
+  float: left;
+}
+
+.main .right-border {
+  border-right: 30px solid transparent;
+  border-top: 110px solid rgba(255, 255, 255, 0.7);
+  float: right;
+}
+
+.static-elements .text {
+  width: 270px;
+  color: white;
+  font-family: "ProximaNova-Bold";
+  margin-left: 30px;
+  margin-top: 93px;
+  font-size: 20px;
+  line-height: 22px;
+  height: 72px;
+}
+
+.static-elements .button a {
+  background: linear-gradient(#FF4F58, #FD7048);
+  color: white;
+  border-radius: 2px;
+  border: 2px solid white;
+  font-family: ProximaNova-Bold;
+  font-size: 23px;
+  padding: 5px 20px;
+  margin-left: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 25px;
+}
+
+.static-elements .left-main-border {
+  position: absolute;
+  top: 0;
+  margin-left: -10px;
+  left: 0;
+  margin-top: -3px;
+  background: white;
+  transform: rotate(16deg);
+}
+
+.rooms {
+  position: absolute;
+  z-index: 90;
+  top: calc(var(--header-height) + 130px);
+  left: 380px;
+}
+
+.rooms .text {
+  height: 63px;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 36px;
+  font-style: italic;
+  padding: 5px 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+.rooms .text span {
+  display: inline-block;
+  border-bottom: 3px solid black;
+  padding: 5px;
+  width: 250px;
+  box-sizing: border-box;
+}
+
+.rooms .left-border {
+  border-right: 18px solid rgba(255, 255, 255, 0.7);
+  border-top: 73px solid transparent;
+  float: left;
+}
+
+.rooms .right-border {
+  border-right: 18px solid transparent;
+  border-top: 73px solid rgba(255, 255, 255, 0.7);;
+  float: right;
+}
+
+/*rooms controller*/
+#room-2, #room-3 {
+  display: none;
+}
+
+#nav-1:checked ~ .rooms .text #room-1, #nav-2:checked ~ .rooms .text #room-2, #nav-3:checked ~ .rooms .text #room-3 {
+  display: inline-block;
+}
+
+#nav-1:checked ~ .rooms .text #room-2, #nav-1:checked ~ .rooms .text #room-3,
+#nav-2:checked ~ .rooms .text #room-1, #nav-2:checked ~ .rooms .text #room-3,
+#nav-3:checked ~ .rooms .text #room-1, #nav-3:checked ~ .rooms .text #room-2 {
+  display: none;
+}
+
+.prices {
+  position: absolute;
+  z-index: 90;
+  top: calc(var(--header-height) + 130px);
+  left: 680px;
+}
+
+.prices .text {
+  height: 53px;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 36px;
+  margin: 10px 0;
+  display: inline-block;
+  text-align: center;
+  background: linear-gradient(90deg, #2AEB2A, #007500);
+  color: white;
+  min-width: 140px;
+  box-sizing: border-box;
+}
+
+.prices .text:before {
+  color: white;
+  content: "oт";
+  font-size: 16px;
+}
+
+.prices .text:after {
+  color: white;
+  content: "$/м2";
+  font-size: 16px;
+}
+
+.prices .text span {
+  display: inline-block;
+  padding: 0 5px;
+  font-size: 45px;
+}
+
+.prices .left-border {
+  margin: 10px 0;
+  border-right: 13px solid #2AEB2A;
+  border-top: 53px solid transparent;
+  float: left;
+}
+
+.prices .right-border {
+  margin: 10px 0;
+  border-right: 13px solid transparent;
+  border-top: 53px solid #007500;
+  float: right;
+}
+
+/*price controllers*/
+#price-2, #price-3 {
+  display: none;
+}
+
+#nav-1:checked ~ .prices .text #price-1, #nav-2:checked ~ .prices .text #price-2, #nav-3:checked ~ .prices .text #price-3 {
+  display: inline-block;
+}
+
+#nav-1:checked ~ .prices .text #price-2, #nav-1:checked ~ .prices .text #price-3,
+#nav-2:checked ~ .prices .text #price-1, #nav-2:checked ~ .prices .text #price-3,
+#nav-3:checked ~ .prices .text #price-1, #nav-3:checked ~ .prices .text #price-2 {
+  display: none;
+}
+
+/*--- MEDIA PART ---------------------------------------------------------------*/
+
+@media (max-width: 1200px) {
+  :root {
+    --icon-list-height: 175px;
+    --bottom_arrow: calc(var(--icon-list-height) + 15px);
+  }
+
+  .nav {
+    max-width: 980px;
+  }
+
+  .nav_list li {
+    width: 190px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon_list ul li {
+    width: 210px;
+  }
+
+  .icon_list ul li {
+    font-size: 14px;
+  }
+
+  .icon_list .caption {
+    font-size: 19px;
+  }
+
+  .static-elements {
+    left: 100px;
+  }
+
+  .main .title {
+    font-size: 50px;
+    height: 55px;
+    min-width: 320px;
+  }
+
+  .main .left-border {
+    border-right: 15px solid rgba(255, 255, 255, 0.7);
+    border-top: 55px solid transparent;
+  }
+
+  .main .right-border {
+    border-right: 15px solid transparent;
+    border-top: 55px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .static-elements .left-main-border {
+    margin-left: -20px;
+    height: 110px;
+    transform: rotate(14deg);
+  }
+
+  .static-elements .text {
+    margin-left: 15px;
+    margin-top: 63px;
+    font-size: 16px;
+    line-height: 18px;
+    height: 52px;
+  }
+
+  .static-elements .button a {
+    font-size: 18px;
+    margin-left: 15px;
+    line-height: 20px;
+  }
+
+  .rooms {
+    top: calc(var(--header-height) + 70px);
+    left: 90px;
+  }
+
+  .rooms .text {
+    height: 38px;
+    font-size: 24px;
+    padding-top: 0;
+  }
+
+  .rooms .text span {
+    width: 140px;
+  }
+
+  .rooms .left-border {
+    border-right: 10.5px solid rgba(255, 255, 255, 0.7);
+    border-top: 43px solid transparent;
+  }
+
+  .rooms .right-border {
+    border-right: 10.5px solid transparent;
+    border-top: 43px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .prices {
+    top: calc(var(--header-height) + 70px);
+    left: 270px;
+  }
+
+  .prices .text {
+    height: 33px;
+    font-size: 24px;
+    padding-top: 0;
+    margin: 5px 0;
+    min-width: 75px;
+  }
+
+  .prices .text span {
+    font-size: 30px;
+  }
+
+  .prices .left-border {
+    margin: 5px 0;
+    border-right: 8px solid #2AEB2A;
+    border-top: 33px solid transparent;
+  }
+
+  .prices .right-border {
+    margin: 5px 0;
+    border-right: 8px solid transparent;
+    border-top: 33px solid #007500;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav {
+    max-width: 720px;
+  }
+
+  .nav_list li {
+    width: 130px;
+  }
+
+  .icon_list ul li {
+    width: 150px;
+  }
+
+  .slideshow-wrap input + label {
+    left: 20%;
+    bottom: calc(var(--bottom_arrow) + 7px);
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+  }
+
+  .slideshow-wrap input + label:after {
+    width: 5px;
+    height: 5px;
+    top: 2.5px;
+    left: 2.5px;
+  }
+
+  .slideshow-wrap label[for=nav-1] {
+    margin-left: -20px;
+  }
+
+  .slideshow-wrap label[for=nav-3] {
+    margin-left: 20px;
+  }
+
+  #nav-1:checked ~ .arrows#arrow-2, #nav-2:checked ~ .arrows#arrow-3, #nav-3:checked ~ .arrows#arrow-1 {
+    right: calc(80% - 75px);
+    width: 14px;
+    height: 24px;
+  }
+
+  #nav-2:checked ~ .arrows#arrow-1, #nav-3:checked ~ .arrows#arrow-2, #nav-1:checked ~ .arrows#arrow-3 {
+    left: calc(20% - 75px);
+    width: 14px;
+    height: 24px;
+  }
+
+  #nav-1:checked ~ .arrows#arrow-3 {
+    left: calc(20% - 85px);
+  }
+
+  #nav-2:checked ~ .arrows#arrow-1 {
+    left: calc(20% - 45px);
+  }
+
+  #nav-3:checked ~ .arrows#arrow-2 {
+    left: calc(20% - 65px);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    max-width: 600px;
+  }
+
+  .nav_list li {
+    width: 100px;
+  }
+
+  .icon_list ul li {
+    width: 49%;
+    margin: auto;
+  }
+
+  .logo div {
+    width: 150px;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav {
+    max-width: 100%;
+    margin: 0 20px;
+  }
+
+  .nav_list li {
+    width: fit-content;
+  }
+
+  .nav_list li a {
+    margin-right: 10px;
+  }
+
+  .icon_list ul li {
+    width: 100%;
+    margin: auto;
+  }
+
+  .phone {
+    font-size: 24px;
+    padding-right: 15px;
+  }
+
+  .logo label {
+    display: block;
+    padding-top: 10px;
+  }
+
+  .logo div {
+    display: none;
+    padding: 0;
+  }
+
+
+  .static-elements {
+    left: 25px;
+  }
+
+  .main .title {
+    font-size: 35px;
+    height: 40px;
+    min-width: 270px;
+  }
+
+  .main .left-border {
+    border-right: 10px solid rgba(255, 255, 255, 0.7);
+    border-top: 40px solid transparent;
+  }
+
+  .main .right-border {
+    border-right: 10px solid transparent;
+    border-top: 40px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .static-elements .left-main-border {
+    margin-left: -10px;
+    height: 90px;
+    transform: rotate(14deg);
+  }
+
+  .static-elements .text {
+    margin-left: 0;
+    margin-top: 60px;
+    font-size: 14px;
+    line-height: 14px;
+    height: 42px;
+  }
+
+  .static-elements .button a {
+    font-size: 18px;
+    margin-left: 0;
+    line-height: 16px;
+  }
+
+  .rooms {
+    top: calc(var(--header-height) + 55px);
+    left: 15px;
+  }
+
+  .rooms .text {
+    height: 30px;
+    font-size: 20px;
+  }
+
+  .rooms .text span {
+    width: 100px;
+    padding: 0;
+  }
+
+  .rooms .left-border {
+    border-right: 8.5px solid rgba(255, 255, 255, 0.7);
+    border-top: 35px solid transparent;
+  }
+
+  .rooms .right-border {
+    border-right: 8.5px solid transparent;
+    border-top: 35px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .prices {
+    top: calc(var(--header-height) + 55px);
+    left: 150px;
+  }
+
+  .prices .text {
+    height: 33px;
+    padding-top: 0;
+    margin: 0;
+  }
+
+  .prices .left-border {
+    margin: 0;
+  }
+
+  .prices .right-border {
+    margin: 0;
+  }
+}
+
